@@ -1,4 +1,4 @@
-const CACHE_NAME = `lista_de_compras`;
+const CACHE_NAME = `shopping-list`;
 
 // Use the install event to pre-cache all initial resources.
 self.addEventListener('install', event => {
