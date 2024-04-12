@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#007bff">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Compras</h1>   
+        <div class="button-group">
+                <button id="openModalButton">+</button>
+        </div>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form id="addItemForm">
+                    <!-- No HTML -->
+                    <div id="suggestions"></div>
+                    <input type="text" id="itemName" placeholder="Nome do produto" required>
+                    <input type="number" id="itemPrice" placeholder="Preço" step="0.01" inputmode="decimal" required>
+                    <input type="number" id="itemQuantity" placeholder="Quantidade" inputmode="numeric" required>
+                    <button type="submit">Adicionar Item</button>
+                </form>
+            </div>
+        </div>
+        <table id="shoppingList">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th>Total</th>
+                    <th></th> <!-- Coluna extra para o botão de remoção -->
+                </tr>
+            </thead>
+            <tbody id="shoppingListBody"></tbody>
+        </table>
+        <div id="total"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

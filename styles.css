@@ -1,0 +1,212 @@
+/* styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+input, button {
+  display: block;
+  width: calc(100% - 20px);
+  margin: 0 auto 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* styles.css */
+
+/* Estilos para a tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 4px; /* Reduzindo ainda mais o padding para diminuir o tamanho das células */
+  text-align: left;
+  font-size: 10px; /* Reduzindo ainda mais o tamanho da fonte */
+}
+
+th {
+  background-color: #f2f2f2;
+  font-size: 10px; /* Reduzindo ainda mais o tamanho da fonte no cabeçalho */
+}
+
+th:first-child, td:first-child {
+  width: 35%;
+}
+
+th:nth-child(2), td:nth-child(2) {
+  width: 20%;
+}
+
+th:nth-child(3), td:nth-child(3) {
+  width: 20%;
+}
+
+th:last-child, td:last-child {
+  width: 25%;
+  text-align: right;
+}
+
+
+#total {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* styles.css */
+
+/* Estilos para o modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 20% auto;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: -10px;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* styles.css */
+
+/* Estilos para os botões de remoção */
+.removeButton {
+  background-color: transparent;
+  color: #dc3545;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.removeButton:hover {
+  background-color: rgba(220, 53, 69, 0.1);
+}
+
+.removeButton i {
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+/* styles.css */
+
+/* Estilos para o botão de adicionar */
+#openModalButton {
+  font-size: 14px; /* Reduzindo o tamanho da fonte */
+  height: 30px; /* Definindo a altura dos botões */
+  padding: 5px; /* Reduzindo o padding para melhorar a proporção */
+  border-radius: 5px;
+  margin-right: 5px; /* Adicionando uma margem à direita para separar os botões */
+}
+
+/* No CSS */
+/* Estilos para os botões */
+.button-group {
+  display: flex;
+  justify-content: center; /* Centraliza o botão de adicionar */
+  margin-bottom: 10px; /* Adiciona um espaço entre os botões e a tabela */
+}
+
+#openModalButton {
+  font-size: 14px; /* Reduzindo o tamanho da fonte */
+  height: 30px; /* Definindo a altura do botão */
+  width: 100%; /* Ocupa toda a largura da tela */
+  padding: 5px; /* Reduzindo o padding para melhorar a proporção */
+  border-radius: 5px;
+  background-color: #007bff; /* Cor de fundo do botão */
+  color: #fff; /* Cor do texto do botão */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#openModalButton:hover {
+  background-color: #0056b3; /* Altera a cor de fundo ao passar o mouse */
+}
+
+/* No CSS (styles.css) */
+
+/* Estilos para as sugestões */
+#suggestions {
+  position: absolute;
+  z-index: 1;
+  max-height: 150px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 2px; /* Adiciona um pequeno espaço entre o campo de entrada e as sugestões */
+}
+
+.suggestion {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestion:hover {
+  background-color: #f2f2f2;
+}
