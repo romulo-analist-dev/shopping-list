@@ -17,7 +17,7 @@ function addItem(event) {
     
     const itemName = document.getElementById('itemName').value;
     const itemPrice = parseFloat(document.getElementById('itemPrice').value);
-    const itemQuantity = parseInt(document.getElementById('itemQuantity').value);
+    const itemQuantity = parseFloat(document.getElementById('itemQuantity').value); // Use parseFloat
 
     const newItem = {
         name: itemName,
@@ -53,7 +53,7 @@ function renderShoppingList() {
         row.innerHTML = `
             <td>${item.name}</td>
             <td>R$${item.price.toFixed(2)}</td>
-            <td>${item.quantity}</td>
+            <td>${item.quantity.toFixed(2)}</td> <!-- Mostra a quantidade com 2 casas decimais -->
             <td>R$${totalPrice.toFixed(2)}</td>
             <td><button class="removeButton" data-index="${index}"><i class="fas fa-trash-alt"></i></button></td>
         `;
@@ -67,26 +67,20 @@ function renderShoppingList() {
     `;
     shoppingListBody.appendChild(totalRow);
 
-    // Função para remover uma linha da tabela e o item correspondente do armazenamento local
-    function removeRow(row) {
-        var index = parseInt(row.dataset.index); // Obtém o índice do item a ser removido
-        row.parentNode.removeChild(row); // Remove a linha da tabela
-
+    function removeRow(index) {
         let shoppingList = JSON.parse(localStorage.getItem('shoppingList')) || [];
-        shoppingList.splice(index, 1); // Remove o item correspondente do armazenamento local
+        shoppingList.splice(index, 1); // Remove o item pelo índice
         localStorage.setItem('shoppingList', JSON.stringify(shoppingList)); // Atualiza o armazenamento local
 
         renderShoppingList(); // Atualiza a lista de compras após a remoção
     }
 
-    // Seletor para todos os botões de remover
     var removeButtons = document.querySelectorAll('.removeButton');
 
-    // Adiciona um evento de clique para cada botão de remover
     removeButtons.forEach(function(button) {
         button.addEventListener('click', function() {
-            var row = this.parentNode.parentNode; // Obtém a linha que contém o botão
-            removeRow(row); // Chama a função para remover a linha
+            var index = parseInt(this.dataset.index); // Obtém o índice do item a ser removido
+            removeRow(index); // Chama a função para remover o item
         });
     });
 }
@@ -95,29 +89,24 @@ document.getElementById('addItemForm').addEventListener('submit', addItem);
 
 window.addEventListener('load', renderShoppingList);
 
-// Variáveis para elementos HTML
 const openModalButton = document.getElementById('openModalButton');
 const modal = document.getElementById('modal');
 const closeModalButton = document.getElementsByClassName('close')[0];
 
-// Abrir modal ao clicar no botão "+"
 openModalButton.addEventListener('click', function() {
     modal.style.display = 'block';
 });
 
-// Fechar modal ao clicar no botão "X"
 closeModalButton.addEventListener('click', function() {
     modal.style.display = 'none';
 });
 
-// Fechar modal ao clicar fora do modal
 window.addEventListener('click', function(event) {
     if (event.target == modal) {
         modal.style.display = 'none';
     }
 });
 
-// Lista de produtos
 const productList = [
     "Arroz",
     "Feijão",
@@ -191,26 +180,28 @@ const productList = [
     "Café",
     "Chá",
     "Castanha",
+    "Óleo",
+    "Jarra para suco",
+    "Açúcar",
+    "Farinha de trigo",
+    "Rap10",
+    "Saco pra lixo",
 ];
 
-// Função para atualizar as sugestões
 function updateSuggestions(inputValue) {
     const suggestions = document.getElementById('suggestions');
     suggestions.innerHTML = '';
 
-    // Filtra os produtos que contenham o valor digitado
     const filteredProducts = productList.filter(function(product) {
         return product.toLowerCase().includes(inputValue.toLowerCase());
     });
 
-    // Se houver sugestões disponíveis, exibe o componente de sugestões, caso contrário, esconde-o
     if (filteredProducts.length > 0) {
         suggestions.style.display = 'block';
     } else {
         suggestions.style.display = 'none';
     }
 
-    // Cria um elemento de opção para cada produto filtrado
     filteredProducts.forEach(function(product) {
         const option = document.createElement('div');
         option.classList.add('suggestion');
@@ -223,12 +214,10 @@ function updateSuggestions(inputValue) {
     });
 }
 
-// Event listener para o campo de nome do produto
 document.getElementById('itemName').addEventListener('input', function() {
     updateSuggestions(this.value);
 });
 
-// Event listener para fechar as sugestões quando clicar em qualquer lugar fora do campo de nome do produto
 document.addEventListener('click', function(event) {
     const productNameInput = document.getElementById('itemName');
     const suggestions = document.getElementById('suggestions');

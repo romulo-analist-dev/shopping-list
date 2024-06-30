@@ -19,11 +19,10 @@
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <form id="addItemForm">
-                    <!-- No HTML -->
                     <div id="suggestions"></div>
                     <input type="text" id="itemName" placeholder="Nome do produto" required>
                     <input type="number" id="itemPrice" placeholder="Preço" step="0.01" inputmode="decimal" required>
-                    <input type="number" id="itemQuantity" placeholder="Quantidade" inputmode="numeric" required>
+                    <input type="number" id="itemQuantity" placeholder="Quantidade" step="0.01" inputmode="decimal" required>
                     <button type="submit">Adicionar Item</button>
                 </form>
             </div>
