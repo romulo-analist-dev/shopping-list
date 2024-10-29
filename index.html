@@ -15,45 +15,46 @@
   <body>
     <div class="container">
       <h1>Lista de Compras</h1>
-      <div class="button-group">
-        <button id="openModalButton">+</button>
-      </div>
-      <div id="modal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <form id="addItemForm">
-            <div id="suggestions"></div>
-            <input
-              type="text"
-              id="itemName"
-              placeholder="Nome do produto"
-              required
-            />
-            <input
-              type="number"
-              id="itemPrice"
-              placeholder="Preço"
-              step="0.01"
-              inputmode="decimal"
-              required
-            />
-            <input
-              type="number"
-              id="itemQuantity"
-              placeholder="Quantidade"
-              step="0.01"
-              inputmode="decimal"
-              required
-            />
-            <button type="submit">Adicionar Item</button>
-          </form>
-        </div>
-      </div>
       <div class="tabs">
         <button id="cartTab" class="tab-button active">Carrinho</button>
         <button id="historyTab" class="tab-button">Histórico</button>
       </div>
       <div id="cartContent" class="tab-content">
+        <div class="button-group">
+          <button id="openModalButton">+</button>
+        </div>
+        <div id="modal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="addItemForm">
+              <div id="suggestions"></div>
+              <input
+                type="text"
+                id="itemName"
+                placeholder="Nome do produto"
+                required
+              />
+              <input
+                type="number"
+                id="itemPrice"
+                placeholder="Preço"
+                step="0.01"
+                inputmode="decimal"
+                required
+              />
+              <input
+                type="number"
+                id="itemQuantity"
+                placeholder="Quantidade"
+                step="0.01"
+                inputmode="decimal"
+                required
+              />
+              <button type="submit">Adicionar Item</button>
+            </form>
+          </div>
+        </div>
+
         <table id="shoppingList">
           <thead>
             <tr>

@@ -28,6 +28,7 @@ function addItem(event) {
     addItemToLocalStorage(newItem);
     renderShoppingList();
     document.getElementById('addItemForm').reset();
+    document.getElementById('itemQuantity').value = 1;
 }
 
 function addItemToLocalStorage(item) {
@@ -234,9 +235,13 @@ function finalizarCarrinho() {
     const totalValue = shoppingList.reduce((total, item) => total + (item.price * item.quantity), 0);
     const purchaseDate = new Date().toLocaleString(); // Formata a data atual
 
-    // Adiciona o histórico de compras
+    // Adiciona o histórico de compras com os detalhes do carrinho
     if (shoppingList.length > 0) {
-        purchaseHistory.push({ date: purchaseDate, total: totalValue });
+        purchaseHistory.unshift({ 
+            date: purchaseDate, 
+            total: totalValue, 
+            items: shoppingList // Armazena os itens do carrinho no histórico 
+        });
         localStorage.setItem('purchaseHistory', JSON.stringify(purchaseHistory)); // Armazena no localStorage
     }
 
@@ -257,17 +262,31 @@ window.addEventListener('load', function() {
 function renderPurchaseHistory() {
     const historyContainer = document.getElementById('purchaseHistoryContainer');
     historyContainer.innerHTML = '';
-    
+
     purchaseHistory = JSON.parse(localStorage.getItem('purchaseHistory')) || []; // Carrega o histórico do localStorage
 
     purchaseHistory.forEach((purchase) => {
         const card = document.createElement('div');
-        card.className = 'purchase-history-card'; // Adiciona uma classe para o card
+        card.className = 'purchase-history-card';
+
+        // Adiciona a data e o total
         card.innerHTML = `
             <div class="purchase-date">${purchase.date}</div>
             <div class="purchase-total">Total: R$${purchase.total.toFixed(2)}</div>
         `;
+
+        // Cria um container para a lista de itens
+        const itemList = document.createElement('div');
+        itemList.className = 'purchase-items';
+        purchase.items.forEach(item => {
+            const itemElement = document.createElement('p');
+            itemElement.textContent = `${item.name} - Quantidade: ${item.quantity}, Preço: R$${item.price.toFixed(2)}`;
+            itemList.appendChild(itemElement);
+        });
+
+        card.appendChild(itemList); // Adiciona a lista de itens ao card
         historyContainer.appendChild(card);
     });
 }
+
 

@@ -308,3 +308,11 @@ td:last-child {
   font-size: 14px;
   margin-top: 4px; /* Espaço acima do total */
 }
+.purchase-items {
+  font-size: 0.9em; /* Diminui o tamanho da fonte */
+  max-height: 100px; /* Limita a altura do contêiner */
+  overflow-y: auto; /* Adiciona rolagem vertical se o conteúdo exceder a altura */
+  padding: 5px;
+  margin-top: 5px;
+  border-top: 1px solid #ddd; /* Opcional: separa visualmente os itens do total */
+}
