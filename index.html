@@ -1,47 +1,103 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lista de Compras</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#007bff">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#007bff" />
+  </head>
+  <body>
     <div class="container">
-        <h1>Lista de Compras</h1>   
-        <div class="button-group">
-                <button id="openModalButton">+</button>
+      <h1>Lista de Compras</h1>
+      <div class="button-group">
+        <button id="openModalButton">+</button>
+      </div>
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <form id="addItemForm">
+            <div id="suggestions"></div>
+            <input
+              type="text"
+              id="itemName"
+              placeholder="Nome do produto"
+              required
+            />
+            <input
+              type="number"
+              id="itemPrice"
+              placeholder="Preço"
+              step="0.01"
+              inputmode="decimal"
+              required
+            />
+            <input
+              type="number"
+              id="itemQuantity"
+              placeholder="Quantidade"
+              step="0.01"
+              inputmode="decimal"
+              required
+            />
+            <button type="submit">Adicionar Item</button>
+          </form>
         </div>
-        <div id="modal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <form id="addItemForm">
-                    <div id="suggestions"></div>
-                    <input type="text" id="itemName" placeholder="Nome do produto" required>
-                    <input type="number" id="itemPrice" placeholder="Preço" step="0.01" inputmode="decimal" required>
-                    <input type="number" id="itemQuantity" placeholder="Quantidade" step="0.01" inputmode="decimal" required>
-                    <button type="submit">Adicionar Item</button>
-                </form>
-            </div>
-        </div>
+      </div>
+      <div class="tabs">
+        <button id="cartTab" class="tab-button active">Carrinho</button>
+        <button id="historyTab" class="tab-button">Histórico</button>
+      </div>
+      <div id="cartContent" class="tab-content">
         <table id="shoppingList">
-            <thead>
-                <tr>
-                    <th>Produto</th>
-                    <th>Preço</th>
-                    <th>Quantidade</th>
-                    <th>Total</th>
-                    <th></th> <!-- Coluna extra para o botão de remoção -->
-                </tr>
-            </thead>
-            <tbody id="shoppingListBody"></tbody>
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Preço</th>
+              <th>Quantidade</th>
+              <th>Total</th>
+              <th></th>
+              <!-- Coluna extra para o botão de remoção -->
+            </tr>
+          </thead>
+          <tbody id="shoppingListBody"></tbody>
         </table>
         <div id="total"></div>
+        <button id="finalizarCarrinho">Finalizar Carrinho</button>
+      </div>
+      <div id="historyContent" class="tab-content" style="display: none">
+        <div
+          id="purchaseHistoryContainer"
+          class="purchase-history-container"
+        ></div>
+      </div>
     </div>
 
     <script src="app.js"></script>
-</body>
+    <script>
+      const cartTab = document.getElementById("cartTab");
+      const historyTab = document.getElementById("historyTab");
+      const cartContent = document.getElementById("cartContent");
+      const historyContent = document.getElementById("historyContent");
+
+      cartTab.addEventListener("click", function () {
+        cartTab.classList.add("active");
+        historyTab.classList.remove("active");
+        cartContent.style.display = "block";
+        historyContent.style.display = "none";
+      });
+
+      historyTab.addEventListener("click", function () {
+        historyTab.classList.add("active");
+        cartTab.classList.remove("active");
+        cartContent.style.display = "none";
+        historyContent.style.display = "block";
+      });
+    </script>
+  </body>
 </html>

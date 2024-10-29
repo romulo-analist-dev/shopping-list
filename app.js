@@ -226,3 +226,48 @@ document.addEventListener('click', function(event) {
         suggestions.innerHTML = '';
     }
 });
+
+let purchaseHistory = []; // Array para armazenar o histórico de compras
+
+function finalizarCarrinho() {
+    const shoppingList = JSON.parse(localStorage.getItem('shoppingList')) || [];
+    const totalValue = shoppingList.reduce((total, item) => total + (item.price * item.quantity), 0);
+    const purchaseDate = new Date().toLocaleString(); // Formata a data atual
+
+    // Adiciona o histórico de compras
+    if (shoppingList.length > 0) {
+        purchaseHistory.push({ date: purchaseDate, total: totalValue });
+        localStorage.setItem('purchaseHistory', JSON.stringify(purchaseHistory)); // Armazena no localStorage
+    }
+
+    // Limpa o carrinho
+    localStorage.setItem('shoppingList', JSON.stringify([]));
+    renderShoppingList();
+    renderPurchaseHistory(); // Atualiza o histórico
+}
+
+document.getElementById('finalizarCarrinho').addEventListener('click', finalizarCarrinho);
+
+window.addEventListener('load', function() {
+    renderShoppingList();
+    renderPurchaseHistory(); // Chama a função para renderizar o histórico
+});
+
+
+function renderPurchaseHistory() {
+    const historyContainer = document.getElementById('purchaseHistoryContainer');
+    historyContainer.innerHTML = '';
+    
+    purchaseHistory = JSON.parse(localStorage.getItem('purchaseHistory')) || []; // Carrega o histórico do localStorage
+
+    purchaseHistory.forEach((purchase) => {
+        const card = document.createElement('div');
+        card.className = 'purchase-history-card'; // Adiciona uma classe para o card
+        card.innerHTML = `
+            <div class="purchase-date">${purchase.date}</div>
+            <div class="purchase-total">Total: R$${purchase.total.toFixed(2)}</div>
+        `;
+        historyContainer.appendChild(card);
+    });
+}
+

@@ -25,7 +25,8 @@ form {
   margin-bottom: 20px;
 }
 
-input, button {
+input,
+button {
   display: block;
   width: calc(100% - 20px);
   margin: 0 auto 10px;
@@ -49,6 +50,49 @@ button:hover {
 
 /* styles.css */
 
+/* Estilos das tabs */
+
+.tabs {
+  display: flex; /* Para organizar os botões em uma linha */
+}
+
+.tab-button {
+  flex: 1; /* Faz com que cada botão ocupe a mesma largura */
+  padding: 10px; /* Ajusta o espaçamento interno */
+  border: 1px solid #007bff; /* Borda padrão */
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Efeito suave ao passar o mouse */
+  border-radius: 0; /* Remove bordas arredondadas padrão */
+}
+
+.tab-button:hover {
+  background-color: #0056b3; /* Cor ao passar o mouse */
+}
+
+.tab-button.active {
+  background-color: #0056b3; /* Cor para o botão ativo */
+}
+
+.tab-button:first-child {
+  border-top-left-radius: 5px; /* Borda arredondada à esquerda do primeiro botão */
+  border-bottom-left-radius: 5px; /* Borda arredondada à esquerda do primeiro botão */
+}
+
+.tab-button:last-child {
+  border-top-right-radius: 5px; /* Borda arredondada à direita do último botão */
+  border-bottom-right-radius: 5px; /* Borda arredondada à direita do último botão */
+}
+
+.tab-content {
+  border: 1px solid #ccc;
+  padding: 15px;
+  max-width: 100%; /* Garante que a largura não ultrapasse o contêiner pai */
+  overflow: hidden; /* Previne que o conteúdo exceda os limites do contêiner */
+  box-sizing: border-box;
+}
+
 /* Estilos para a tabela */
 table {
   width: 100%;
@@ -56,7 +100,8 @@ table {
   margin-bottom: 20px;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #ddd;
   padding: 4px; /* Reduzindo ainda mais o padding para diminuir o tamanho das células */
   text-align: left;
@@ -68,23 +113,26 @@ th {
   font-size: 10px; /* Reduzindo ainda mais o tamanho da fonte no cabeçalho */
 }
 
-th:first-child, td:first-child {
+th:first-child,
+td:first-child {
   width: 35%;
 }
 
-th:nth-child(2), td:nth-child(2) {
+th:nth-child(2),
+td:nth-child(2) {
   width: 20%;
 }
 
-th:nth-child(3), td:nth-child(3) {
+th:nth-child(3),
+td:nth-child(3) {
   width: 20%;
 }
 
-th:last-child, td:last-child {
+th:last-child,
+td:last-child {
   width: 25%;
   text-align: right;
 }
-
 
 #total {
   font-weight: bold;
@@ -167,7 +215,6 @@ th:last-child, td:last-child {
 .button-group {
   display: flex;
   justify-content: center; /* Centraliza o botão de adicionar */
-  margin-bottom: 10px; /* Adiciona um espaço entre os botões e a tabela */
 }
 
 #openModalButton {
@@ -209,4 +256,55 @@ th:last-child, td:last-child {
 
 .suggestion:hover {
   background-color: #f2f2f2;
+}
+
+/* Estilos para botão de finalizar carrinho */
+
+#finalizarCarrinho {
+  padding: 10px 20px;
+  background-color: #28a745; /* Cor verde para o botão */
+  color: white;
+  border: none;
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Efeito suave ao passar o mouse */
+}
+
+#finalizarCarrinho:hover {
+  background-color: #218838; /* Cor ao passar o mouse */
+}
+
+/* Estilo do Histórico */
+
+.purchase-history-container {
+  display: flex;
+  flex-direction: column; /* Alinha os cards em coluna */
+  gap: 10px; /* Espaço entre os cards */
+  width: 100%; /* Garante que o contêiner ocupe 100% da largura */
+  box-sizing: border-box;
+}
+
+.purchase-history-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px; /* Arredonda os cantos */
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  width: 100%; /* Faz o card ocupar 100% da largura do contêiner */
+  transition: box-shadow 0.3s; /* Animação suave */
+  box-sizing: border-box; /* Inclui padding e borda na largura total */
+}
+
+.purchase-history-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Aumenta a sombra ao passar o mouse */
+}
+
+.purchase-date {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.purchase-total {
+  font-size: 14px;
+  margin-top: 4px; /* Espaço acima do total */
 }
