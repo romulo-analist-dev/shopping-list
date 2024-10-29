@@ -32,7 +32,7 @@ function addItem(event) {
 
 function addItemToLocalStorage(item) {
     let shoppingList = JSON.parse(localStorage.getItem('shoppingList')) || [];
-    shoppingList.push(item);
+    shoppingList.unshift(item);
     localStorage.setItem('shoppingList', JSON.stringify(shoppingList));
 }
 
@@ -94,6 +94,7 @@ const modal = document.getElementById('modal');
 const closeModalButton = document.getElementsByClassName('close')[0];
 
 openModalButton.addEventListener('click', function() {
+    document.getElementById('itemQuantity').value = 1;
     modal.style.display = 'block';
 });
 
